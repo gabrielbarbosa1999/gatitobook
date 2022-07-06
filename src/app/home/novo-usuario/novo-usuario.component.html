@@ -1,0 +1,86 @@
+<h4 class="text-center">Registre-se e mostre seu pet ao mundo</h4>
+
+<form class="form mt-4" [formGroup]="novoUsuarioForm" (submit)="cadastrar()">
+  <div class="form-group">
+    <input
+      type="email"
+      placeholder="E-mail"
+      class="form-control"
+      formControlName="email"
+    />
+    <app-mensagem
+      *ngIf="
+        novoUsuarioForm.get('email')?.errors?.['required'] &&
+        novoUsuarioForm.get('email')?.touched
+      "
+      mensagem="E-mail obrigatório"
+    ></app-mensagem>
+    <app-mensagem
+      *ngIf="
+        novoUsuarioForm.get('email')?.errors?.['email'] &&
+        novoUsuarioForm.get('email')?.touched
+        "
+      mensagem="E-mail inválido!"
+    ></app-mensagem>
+  </div>
+  <br />
+  <div class="form-group">
+    <input
+      type="text"
+      placeholder="Nome Completo"
+      class="form-control"
+      formControlName="fullName"
+    />
+    <app-mensagem
+      *ngIf="
+        novoUsuarioForm.get('fullName')?.errors &&
+        novoUsuarioForm.get('fullName')?.touched
+      "
+      mensagem="Nome inválido"
+    ></app-mensagem>
+  </div>
+  <br />
+  <div class="form-group">
+    <input
+      type="text"
+      placeholder="Usuário"
+      class="form-control"
+      formControlName="userName"
+    />
+    <app-mensagem
+      *ngIf="novoUsuarioForm.get('userName')?.errors?.['minusculo'] && novoUsuarioForm.get('userName')?.touched"
+      mensagem="Usuário deve ser em letra minúscula"
+    ></app-mensagem>
+    <app-mensagem
+      *ngIf="novoUsuarioForm.get('userName')?.errors?.['required'] && novoUsuarioForm.get('userName')?.touched"
+      mensagem="Usuário obrigatório"
+    ></app-mensagem>
+    <app-mensagem *ngIf="novoUsuarioForm.get('userName')?.errors?.['usuarioExistente']" mensagem="Usuário já cadastrado"></app-mensagem>
+  </div>
+  <br />
+  <div class="form-group">
+    <input
+      type="password"
+      placeholder="Senha"
+      class="form-control"
+      formControlName="password"
+    />
+    <app-mensagem *ngIf="novoUsuarioForm.get('password')?.errors?.['required'] && novoUsuarioForm.get('password')?.touched" mensagem="Senha obrigatória"></app-mensagem>
+    <app-mensagem *ngIf="novoUsuarioForm.errors?.['senhaIgualUsuario']" mensagem="Sua senha não pode ser igual o usuário"></app-mensagem>
+  </div>
+  <br>
+  <div class="form-group">
+    <input
+      type="password"
+      placeholder="Confirmar Senha"
+      class="form-control"
+      formControlName="confPass"
+    />
+    <app-mensagem *ngIf="novoUsuarioForm.get('confPass')?.errors?.['required'] && novoUsuarioForm.get('confPass')?.touched" mensagem="Confirmar senha obrigatória"></app-mensagem>
+    <app-mensagem *ngIf="novoUsuarioForm.errors?.['confSenha']" mensagem="A senhas digitadas não sao iguais"></app-mensagem>
+  </div>
+  <br />
+  <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
+</form>
+<!-- Criando um link no propio templete usando o routerLink -->
+<p>Já possui um usuário? <a [routerLink]="['']">Faça o login</a></p>

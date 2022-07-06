@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home.component';
 import { LoginComponent } from './login/login.component';
+import { NovoUsuarioComponent } from './novo-usuario/novo-usuario.component';
 
 const routes: Routes = [{
   //Assim que o usario acessar a rota home, cada elemento que criar aqui sera somente visto peor este modulo
@@ -13,6 +14,10 @@ const routes: Routes = [{
     {
       path: '',
       component: LoginComponent
+    },
+    {
+      path: 'cadastro',
+      component: NovoUsuarioComponent
     },
   ]
 }];
