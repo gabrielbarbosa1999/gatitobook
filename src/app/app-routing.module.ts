@@ -1,3 +1,5 @@
+import { LoginGuard } from './autenticacao/login.guard';
+import { AutenticacaoGuard } from './autenticacao/autenticacao.guard';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -16,12 +18,14 @@ const routes: Routes = [
     //Função import retorna uma promise
     //Que recebe o modulo
     loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
+    canLoad: [LoginGuard],
 
     //As rotas auxiliares não ficam aqui ficam no modulo
   },
   {
     path: 'animais',
     loadChildren: () => import('./animais/animais.module').then((m) => m.AnimaisModule),
+    canLoad: [AutenticacaoGuard],
   }
 ];
 //Lazy Loading = Carregamento sobre demanda
