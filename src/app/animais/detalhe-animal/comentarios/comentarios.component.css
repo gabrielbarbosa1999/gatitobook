@@ -1,4 +1,26 @@
-.comentario-list {
-  height: 50vh;
-  overflow-y: auto;
+.comentario {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.comentario-start {
+  display: flex;
+  justify-content: center;
+}
+
+.comentario-start ul {
+  width: 500px;
+}
+
+form {
+  width: 500px;
+}
+
+textarea {
+  margin-bottom: 10px;
+  border: 1px solid #000;
+  width: 100%;
+  display: block;
 }

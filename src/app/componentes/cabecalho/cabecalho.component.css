@@ -1,0 +1,19 @@
+header nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  overflow: hidden;
+}
+
+header nav a {
+  text-transform: uppercase;
+  margin-left: 10px;
+  color: #000;
+  text-decoration: none;
+}
+
+header nav a:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
