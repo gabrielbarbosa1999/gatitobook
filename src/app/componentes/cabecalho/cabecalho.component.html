@@ -1,6 +1,14 @@
 <header class="sticky-top">
   <nav class="navbar navbar-light bg-white">
-    <a class="navbar-brand">Gatitobook</a>
+    <a class="navbar-brand">
+      <i class="fa fa-bars mr-2" (click)="menu.abreMenu()" (keyup.space)="menu.abreMenu()"></i>
+      Gatitobook
+    </a>
+    <app-menu #menu>
+      <ul class="lista-unstyled">
+        <li><a [routerLink]="['animais', 'novo']">Novo Animal</a></li>
+      </ul>
+    </app-menu>
     <!--Pega a informacão do usuario e fazer o subscribe-->
     <div *ngIf="user$|async as user">
       <div *ngIf="user.name; else login">

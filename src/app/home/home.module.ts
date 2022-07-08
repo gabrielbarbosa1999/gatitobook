@@ -7,6 +7,7 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { LoginComponent } from './login/login.component';
 import { NovoUsuarioComponent } from './novo-usuario/novo-usuario.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [HomeComponent, LoginComponent, NovoUsuarioComponent],
@@ -15,8 +16,7 @@ import { NovoUsuarioComponent } from './novo-usuario/novo-usuario.component';
     HomeRoutingModule,
     //Impotando o modolu de formulario do angular
     FormsModule,
-    MensagemModule,
-    ReactiveFormsModule,
+    SharedModule
   ],
   exports: [
     //Modulo exporta o HomeComponent e expoe ele

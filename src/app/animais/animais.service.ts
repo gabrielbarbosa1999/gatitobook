@@ -36,4 +36,21 @@ export class AnimaisService {
         return erro.status == NOT_MODIFIED ? of(false) : throwError(erro);
       }));
   }
+
+  upload(descricao: string, permiteComentario: boolean, arquivo: File) {
+    //Empacotando os dados para ser enviado
+    const formData = new FormData();
+
+    formData.append('description', descricao);
+    formData.append('allowComments', permiteComentario ? 'true' : 'false')
+    formData.append('imageFile', arquivo);
+
+    //Monitorando o upload
+    //Utilizando o objetos de opçoes para monitorar os eventos
+    //E reporta em que etapa está a requisição atrasves do obeservable
+    return this.http.post(`${API}/photos/upload`, formData, {
+      observe: 'events',
+      reportProgress: true
+    })
+  }
 }

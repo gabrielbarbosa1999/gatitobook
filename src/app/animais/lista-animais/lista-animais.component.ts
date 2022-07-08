@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { AnimaisService } from './../animais.service';
 import { UsuarioService } from './../../autenticacao/usuario/usuario.service';
@@ -13,14 +14,22 @@ import { Observable } from 'rxjs';
 export class ListaAnimaisComponent implements OnInit {
 
   //Somente declarando
-  animais$!: Observable<Animais>;
+  animais!: Animais;
 
   constructor(
+    /*
     private usuarioService: UsuarioService,
     private animaisService: AnimaisService
+    */
+    private activateRouter: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
+
+    this.activateRouter.params.subscribe(param => {
+      this.animais = this.activateRouter.snapshot.data['animais'];
+    })
+
     /*
     this.usuarioService.retornaUsuario().subscribe((usuario) => {
       //Caso o userName for undifined ou null atribui ''
@@ -30,6 +39,9 @@ export class ListaAnimaisComponent implements OnInit {
       });
     });
     */
+
+    /*Codigo nao e mais utilizado pois usamos resolver
+
    //Utilizando RXJS para simplificar
    this.animais$ = this.usuarioService.retornaUsuario().pipe(
     //Troca o fluxo pega o fluxo de usuario e troca para o de animais
@@ -39,6 +51,9 @@ export class ListaAnimaisComponent implements OnInit {
       return this.animaisService.listadoUsuario(userName);
     })
    )
+
+  */
+
   }
 
 }
